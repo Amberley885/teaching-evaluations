@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Course Evaluation Summary 2025</title>
+<style>:root{--bg:#f6f7f9;--panel:#fff;--fg:#1c2430;--muted:#5d6877;--line:#dfe3e9;--accent:#2b6a8f}
+@media (prefers-color-scheme:dark){:root{--bg:#14181e;--panel:#1c222b;--fg:#e8ecf1;--muted:#9aa5b4;--line:#2d3541;--accent:#6fb3d9}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:clamp(16px,4vw,40px)}
+.ce{max-width:58rem;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+h1{font:400 2rem/1.15 Georgia,"Times New Roman",serif;margin:0;text-wrap:balance}
+h2{font-size:1.05rem;font-weight:600;margin:0}p{margin:0}
+.sub{color:var(--muted);max-width:42rem}.note,.label{color:var(--muted);font-size:.82rem;line-height:1.4}
+header{display:flex;flex-direction:column;gap:8px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.big{font:400 2.6rem/1 Georgia,serif;font-variant-numeric:tabular-nums}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:16px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;color:var(--muted);font-size:.82rem}
+.legend i{display:inline-block;width:.7rem;height:.7rem;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.rrow{display:grid;grid-template-columns:minmax(7rem,11rem) 1fr 2.6rem;align-items:center;gap:8px;padding-block:5px}
+.rbar{display:flex;height:1.5rem;border-radius:4px;overflow:hidden;background:var(--line)}
+.rbar span{display:flex;align-items:center;justify-content:center;font-size:.82rem;font-variant-numeric:tabular-nums}
+.rmean{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.hrow{display:grid;grid-template-columns:minmax(5rem,9rem) 1fr 1.6rem;align-items:center;gap:8px;font-size:.82rem;padding-block:2px}
+.hbar{height:.9rem;background:var(--line);border-radius:3px;overflow:hidden}.hbar span{display:block;height:100%;background:var(--accent);border-radius:3px}
+.hn{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.cgroup{display:flex;flex-direction:column;gap:6px;padding-block:10px;border-top:1px solid var(--line)}.cgroup:first-child{border-top:0}
+.ctopic{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+blockquote{margin:0;padding-left:16px;border-left:2px solid var(--line);max-width:46rem}
+@media(max-width:480px){.rrow{grid-template-columns:1fr 2.6rem}.rrow .rl{grid-column:1/-1}.rrow .rbar{grid-column:1}}
+</style></head><body><main class="ce">
+<header><p class="label">Student course evaluation, anonymous</p><h1>Advanced Statistics, Summer 2025</h1><p class="sub">Instructor: Jiewen Luo. Students rated the teaching highly, and the one recurring concern was fitting a wide range of material into two weeks.</p></header>
+<section class="tiles"><div class="card"><span class="label">Overall effectiveness, out of 5</span><span class="big" id="t-eff">&mdash;</span></div>
+<div class="card"><span class="label">Students who responded</span><span class="big" id="t-n">&mdash;</span></div>
+<div class="card"><span class="label">Course difficulty, out of 10</span><span class="big" id="t-diff">&mdash;</span></div></section>
+<section class="card"><h2>Instructor ratings</h2>
+<p class="note">Number of students choosing each rating. The figure at the right is the average, with Outstanding as 5 and Poor as 1. Responsibility was asked on an agree scale, so Strongly agree counts as 5.</p>
+<div class="legend" id="legend"></div><div id="ratings"></div></section>
+<section class="grid3"><div class="card"><h2>Difficulty</h2><p class="note">Students rating the course 1 (easy) to 10 (very hard).</p><div id="difficulty"></div></div>
+<div class="card"><h2>Pace</h2><p class="note">&ldquo;The pace of the course was appropriate for the material covered.&rdquo;</p><div id="pace"></div></div>
+<div class="card"><h2>Workload</h2><p class="note">&ldquo;The course workload was...&rdquo;</p><div id="workload"></div></div>
+</section>
+<section class="card"><h2>What students wrote</h2><p class="note">Written comments, lightly corrected for spelling. Comments that were blank or a single character are left out.</p><div id="comments"></div></section>
+<p class="note">Collected through an end-of-course form. Counts are small, so read each figure as the view of a handful of students rather than a rate.</p>
+</main>
+<script>const DATA={"ratings": [{"item": "Organization", "five": "5", "four": "2", "three": "0", "two": "0", "one": "0"}, {"item": "Responsiveness", "five": "4", "four": "3", "three": "0", "two": "0", "one": "0"}, {"item": "Independence", "five": "2", "four": "5", "three": "0", "two": "0", "one": "0"}, {"item": "Knowledge", "five": "5", "four": "2", "three": "0", "two": "0", "one": "0"}, {"item": "Responsibility", "five": "6", "four": "1", "three": "0", "two": "0", "one": "0"}, {"item": "Presentation", "five": "4", "four": "3", "three": "0", "two": "0", "one": "0"}, {"item": "Classroom atmosphere", "five": "2", "four": "4", "three": "1", "two": "0", "one": "0"}, {"item": "Stimulation", "five": "1", "four": "6", "three": "0", "two": "0", "one": "0"}, {"item": "Overall effectiveness", "five": "3", "four": "4", "three": "0", "two": "0", "one": "0"}], "comments": [{"topic": "Organization", "comment": "The organization was well structured and appropriate."}, {"topic": "Organization", "comment": "Very well organized."}, {"topic": "Responsiveness", "comment": "The instructor always responded to students."}, {"topic": "Responsiveness", "comment": "Reasonably responsive, though it was hard in the time frame to assess."}, {"topic": "Independence", "comment": "The instructor's ability to encourage independent thinking was good through problem sets."}, {"topic": "Knowledge", "comment": "The instructor is expert in this course."}, {"topic": "Responsibility", "comment": "The instructor is very responsible."}, {"topic": "Presentation", "comment": "The instructor gave us the material previous to each class, and following the class was easier in that way."}, {"topic": "Presentation", "comment": "Perhaps a bit too fast at times, though I recognize time constraints were a factor."}, {"topic": "Classroom atmosphere", "comment": "The atmosphere was based on respect."}, {"topic": "Stimulation", "comment": "The instructor asked questions to stimulate curiosity."}, {"topic": "Overall effectiveness", "comment": "The instructor was very prepared to teach this class."}, {"topic": "Difficulty", "comment": "The topics covered in this class were difficult because of the several tools that we need in stats."}, {"topic": "Difficulty", "comment": "I think 2 weeks is a bit too condensed for a course of this nature. I covered many of these over a semester last year."}, {"topic": "Pace", "comment": "By design, the course covers a wide range of topics, which is difficult to cover in just two weeks."}, {"topic": "Pace", "comment": "Like I said it was a lot to cover."}, {"topic": "Workload", "comment": "The workload was appropriate given the nature of the course."}, {"topic": "Other comments", "comment": "Jiewen was great! Very organized lectures and well prepared. Exam was a bit long."}, {"topic": "Other comments", "comment": "Overall this was a great course for both reviewing and introducing statistical concepts. I thought the pace was too quick in some subjects making it difficult to keep up with concepts."}, {"topic": "Other comments", "comment": "Perhaps open the course in early May to enable better pacing."}], "difficulty": [{"score": "1", "count": "0"}, {"score": "2", "count": "0"}, {"score": "3", "count": "0"}, {"score": "4", "count": "0"}, {"score": "5", "count": "0"}, {"score": "6", "count": "0"}, {"score": "7", "count": "1"}, {"score": "8", "count": "3"}, {"score": "9", "count": "2"}, {"score": "10", "count": "1"}], "pace": [{"answer": "Strongly agree", "count": "0"}, {"answer": "Agree", "count": "0"}, {"answer": "Neutral", "count": "5"}, {"answer": "Disagree", "count": "2"}, {"answer": "Strongly disagree", "count": "0"}], "workload": [{"answer": "Too much", "count": "2"}, {"answer": "Just about right", "count": "5"}, {"answer": "Not enough", "count": "0"}]};const LV=[['five','Outstanding',100],['four','Good',62],['three','Average',36],['two','Fair',22],['one','Poor',12]];
+const shade=p=>`color-mix(in srgb, var(--accent) ${p}%, var(--panel))`;
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const $=id=>document.getElementById(id);
+const lg=$('legend');LV.forEach(l=>{const s=el('span');const i=el('i');i.style.background=shade(l[2]);s.append(i,l[1]);lg.append(s)});
+const means={};
+DATA.ratings.forEach(r=>{const c=LV.map(l=>+r[l[0]]);const n=c.reduce((a,b)=>a+b,0);means[r.item]={n,mean:(5*c[0]+4*c[1]+3*c[2]+2*c[3]+c[4])/n}});
+const ov=means['Overall effectiveness'];$('t-eff').textContent=ov.mean.toFixed(2);$('t-n').textContent=ov.n;
+$('ratings').replaceChildren(...DATA.ratings.map(r=>{const line=el('div','rrow');line.append(el('span','rl',r.item));const bar=el('div','rbar');
+ LV.forEach(l=>{const n=+r[l[0]];if(!n)return;const s=el('span',null,n);s.style.flex=n+' 0 0';s.style.background=shade(l[2]);s.style.color=l[2]>=60?'var(--panel)':'var(--fg)';bar.append(s)});
+ line.append(bar,el('span','rmean',means[r.item].mean.toFixed(2)));return line}));
+const hb=(id,key)=>{if(!DATA[id])return;const rows=DATA[id],max=Math.max(1,...rows.map(x=>+x.count));
+ $(id).replaceChildren(...rows.map(x=>{const l=el('div','hrow');l.append(el('span',null,x[key]));const t=el('div','hbar');const f=el('span');f.style.width=(+x.count/max*100)+'%';t.append(f);l.append(t,el('span','hn',x.count));return l}))};
+hb('difficulty','score');hb('pace','answer');hb('workload','answer');
+if(DATA.difficulty){let n=0,s=0;DATA.difficulty.forEach(d=>{n+=+d.count;s+=+d.score*+d.count});$('t-diff').textContent=(s/n).toFixed(1)}
+const order=[],by={};DATA.comments.forEach(x=>{if(!by[x.topic]){by[x.topic]=[];order.push(x.topic)}by[x.topic].push(x.comment)});
+$('comments').replaceChildren(...order.map(t=>{const g=el('div','cgroup');g.append(el('span','ctopic',t));by[t].forEach(c=>g.append(el('blockquote',null,c)));return g}));
+</script></body></html>
