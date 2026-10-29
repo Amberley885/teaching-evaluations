@@ -49,7 +49,7 @@ const $=id=>document.getElementById(id);
 const lg=$('legend');LV.forEach(l=>{const s=el('span');const i=el('i');i.style.background=shade(l[2]);s.append(i,l[1]);lg.append(s)});
 const means={};
 DATA.ratings.forEach(r=>{const c=LV.map(l=>+r[l[0]]);const n=c.reduce((a,b)=>a+b,0);means[r.item]={n,mean:(5*c[0]+4*c[1]+3*c[2]+2*c[3]+c[4])/n}});
-const ov=means['Overall effectiveness'];$('t-eff').textContent=ov.mean.toFixed(2);$('t-n').textContent=ov.n;
+const ov=means['Overall effectiveness'];$('t-eff').textContent=ov.mean.toFixed(2);$('t-n').textContent=ov.n+'/16';
 $('ratings').replaceChildren(...DATA.ratings.map(r=>{const line=el('div','rrow');line.append(el('span','rl',r.item));const bar=el('div','rbar');
  LV.forEach(l=>{const n=+r[l[0]];if(!n)return;const s=el('span',null,n);s.style.flex=n+' 0 0';s.style.background=shade(l[2]);s.style.color=l[2]>=60?'var(--panel)':'var(--fg)';bar.append(s)});
  line.append(bar,el('span','rmean',means[r.item].mean.toFixed(2)));return line}));

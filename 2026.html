@@ -61,7 +61,7 @@ const stack=(id,rows,L)=>$(id).replaceChildren(...rows.map(r=>{const line=el('di
  line.append(bar,el('span','rmean',mean(r.c).toFixed(2)));return line}));
 stack('ratings',DATA.ratings,L1);stack('agree',DATA.agree,L2);
 const ri=find('ratings','Overall instructor rating'),rc=find('ratings','Overall course rating'),rec=find('agree','Would recommend the instructor');
-$('t-n').textContent=tot(ri);$('t-ins').textContent=mean(ri).toFixed(2);$('t-crs').textContent=mean(rc).toFixed(2);
+$('t-n').textContent=tot(ri)+'/15';$('t-ins').textContent=mean(ri).toFixed(2);$('t-crs').textContent=mean(rc).toFixed(2);
 $('t-rec').textContent=Math.round((rec[0]+rec[1])/tot(rec)*100)+'%';
 let n=0,s=0;DATA.difficulty.forEach(d=>{n+=+d.count;s+=+d.score*+d.count});$('t-diff').textContent=(s/n).toFixed(1);
 const hb=(id,key)=>{const rows=DATA[id],max=Math.max(1,...rows.map(x=>+x.count));
